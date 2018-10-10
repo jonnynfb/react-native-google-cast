@@ -2,10 +2,12 @@ package com.googlecast;
 
 import android.os.Handler;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.MediaRouteButton;
 import android.util.AttributeSet;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 
 import com.facebook.react.uimanager.SimpleViewManager;
@@ -65,6 +67,11 @@ public class GoogleCastButtonManager extends SimpleViewManager<MediaRouteButton>
 
         public ColorableMediaRouteButton(Context context) {
             super(context);
+
+            Context castContext = new ContextThemeWrapper(context, R.style.Theme_MediaRouter);
+            TypedArray a = castContext.obtainStyledAttributes(null,R.styleable.MediaRouteButton, R.attr.mediaRouteButtonStyle, 0);
+            mRemoteIndicatorDrawable = a.getDrawable(R.styleable.MediaRouteButton_externalRouteEnabledDrawable);
+            a.recycle();
         }
 
         public ColorableMediaRouteButton(Context context, AttributeSet attrs) {
@@ -82,8 +89,8 @@ public class GoogleCastButtonManager extends SimpleViewManager<MediaRouteButton>
         }
 
         public void applyTint(Integer color) {
-            Drawable wrapDrawable = DrawableCompat.wrap(mRemoteIndicatorDrawable);
-            DrawableCompat.setTint(wrapDrawable, color);
+            DrawableCompat.setTint(mRemoteIndicatorDrawable, color);
+            this.setRemoteIndicatorDrawable(mRemoteIndicatorDrawable);
         }
     }
 }
