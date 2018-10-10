@@ -61,6 +61,9 @@ export default {
   seek(playPosition: number) {
     return GoogleCast.seek(playPosition)
   },
+  getStreamPosition(): Promise {
+    return GoogleCast.getStreamPosition()
+  },
   launchExpandedControls: GoogleCast.launchExpandedControls,
   showIntroductoryOverlay: GoogleCast.showIntroductoryOverlay,
 

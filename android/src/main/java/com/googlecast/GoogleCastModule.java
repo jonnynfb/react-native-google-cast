@@ -209,6 +209,20 @@ public class GoogleCastModule
     }
 
     @ReactMethod
+    public void getStreamPosition(final Promise promise) {
+        if (mCastSession != null) {
+            getReactApplicationContext().runOnUiQueueThread(new Runnable() {
+                @Override
+                public void run() {
+                    long streamPositionLong = mCastSession.getRemoteMediaClient().getApproximateStreamPosition();
+                    int streamPosition = (int)streamPositionLong;
+                    promise.resolve(streamPosition);
+                }
+            });
+        }
+    }
+
+    @ReactMethod
     public void endSession(final boolean stopCasting, final Promise promise) {
         getReactApplicationContext().runOnUiQueueThread(new Runnable() {
             @Override
