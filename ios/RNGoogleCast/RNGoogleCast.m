@@ -45,6 +45,11 @@ RCT_EXPORT_MODULE();
   };
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 - (NSArray<NSString *> *)supportedEvents {
   return @[
     SESSION_STARTING, SESSION_STARTED, SESSION_START_FAILED, SESSION_SUSPENDED,
