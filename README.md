@@ -10,7 +10,7 @@ This library wraps the native Google Cast SDK v3 for Android and iOS, providing 
 **This version is not deployed to npm yet. Please install directly from github:**
 
 ```
-$ npm install github:jonnynfb/react-native-google-cast --save
+$ npm install github:nfb-onf/react-native-google-cast --save
 $ react-native link react-native-google-cast
 ```
 
@@ -79,6 +79,10 @@ GoogleCast.castMedia({
   studio: 'Blender Foundation',
   streamDuration: 596, // seconds
   playPosition: 10, // seconds
+  captionUrl: 'https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt',
+  captionName: 'Português',
+  captionLanguage: 'pt-BR',
+  captionColor: '#FFFF00'
 });
 ```
 
