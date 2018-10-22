@@ -25,6 +25,10 @@ export default {
     posterUrl: string,
     streamDuration: number,
     playPosition: number,
+    captionUrl: string,
+    captionName: string,
+    captionLanguage: string,
+    captionColor: string
   }) {
     return GoogleCast.castMedia(params)
   },
