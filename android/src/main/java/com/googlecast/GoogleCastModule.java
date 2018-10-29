@@ -147,8 +147,8 @@ public class GoogleCastModule
                 .setContentType("videos/mp4")
                 .setMetadata(movieMetadata);
 
-        if (params.hasKey("duration")) {
-            builder = builder.setStreamDuration(params.getInt("duration"));
+        if (params.hasKey("streamDuration")) {
+            builder = builder.setStreamDuration(params.getInt("streamDuration"));
         }
 
         if (params.hasKey("captionUrl") && params.getString("captionUrl") != null) {
