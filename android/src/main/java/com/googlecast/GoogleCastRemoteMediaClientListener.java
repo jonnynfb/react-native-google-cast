@@ -56,6 +56,7 @@ public class GoogleCastRemoteMediaClientListener implements RemoteMediaClient.Li
         map.putInt("idleReason", mediaStatus.getIdleReason());
         map.putBoolean("muted", mediaStatus.isMute());
         map.putInt("streamPosition", (int) (mediaStatus.getStreamPosition() / 1000));
+        map.putInt("streamDuration", (int) (mediaStatus.getMediaInfo().getStreamDuration() / 1000));
 
         WritableMap message = Arguments.createMap();
         message.putMap("mediaStatus", map);

@@ -6,6 +6,7 @@ import com.google.android.gms.cast.framework.SessionManagerListener;
 public class GoogleCastSessionManagerListener implements SessionManagerListener<CastSession> {
     private GoogleCastModule module;
     private GoogleCastRemoteMediaClientListener remoteMediaClientListener;
+    private GoogleCastRemoteMediaClientProgressListener remoteMediaClientProgressListener;
 
     public GoogleCastSessionManagerListener(GoogleCastModule module) {
         this.module = module;
@@ -67,7 +68,9 @@ public class GoogleCastSessionManagerListener implements SessionManagerListener<
             @Override
             public void run() {
                 remoteMediaClientListener = new GoogleCastRemoteMediaClientListener(module);
+                remoteMediaClientProgressListener = new GoogleCastRemoteMediaClientProgressListener(module);
                 castSession.getRemoteMediaClient().addListener(remoteMediaClientListener);
+                castSession.getRemoteMediaClient().addProgressListener(remoteMediaClientProgressListener, 1000);
             }
         });
     }
