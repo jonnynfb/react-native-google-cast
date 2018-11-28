@@ -22,6 +22,9 @@ RCT_EXPORT_MODULE();
 - (instancetype)init {
   self = [super init];
   channels = [[NSMutableDictionary alloc] init];
+  if(GCKCastContext.sharedInstance.sessionManager.currentCastSession){
+    castSession = GCKCastContext.sharedInstance.sessionManager.currentCastSession;
+  }
   return self;
 }
 
